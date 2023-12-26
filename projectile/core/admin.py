@@ -16,9 +16,9 @@ class UserAdmin(BaseUserAdmin):
     list_display = [
         "id",
         "uid",
-        "username",
         "email",
         "first_name",
+        "last_name",
         "kind",
         "status",
     ]
@@ -27,13 +27,13 @@ class UserAdmin(BaseUserAdmin):
             None,
             {
                 "fields": (
-                    "username",
                     "email",
                     "password",
                     "first_name",
                     "last_name",
                     "image",
                     "kind",
+                    "gender",
                     "status",
                 )
             },
@@ -58,7 +58,6 @@ class UserAdmin(BaseUserAdmin):
             {
                 "classes": ("wide",),
                 "fields": (
-                    "username",
                     "email",
                     "password1",
                     "password2",
@@ -66,6 +65,7 @@ class UserAdmin(BaseUserAdmin):
                     "last_name",
                     "image",
                     "kind",
+                    "gender",
                     "status",
                     "is_active",
                     "is_staff",

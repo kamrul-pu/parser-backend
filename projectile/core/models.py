@@ -25,14 +25,11 @@ from core.utils import get_user_media_path_prefix
 class UserManager(BaseUserManager):
     """Managers for users."""
 
-    def create_user(
-        self, username, first_name, last_name, email, password=None, **extra_fields
-    ):
+    def create_user(self, first_name, last_name, email, password=None, **extra_fields):
         if not email:
             raise ValueError("User must have an email address.")
 
         user = self.model(
-            username=username,
             first_name=first_name,
             last_name=last_name,
             email=self.normalize_email(email),
@@ -43,11 +40,10 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, username, first_name, last_name, email, password):
+    def create_superuser(self, first_name, last_name, email, password):
         """Create a new superuser and return superuser"""
 
         user = self.create_user(
-            username=username,
             first_name=first_name,
             last_name=last_name,
             email=email,
@@ -65,29 +61,25 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, BaseModelWithUID, PermissionsMixin):
     """Users in the System"""
 
-    username = models.CharField(
-        max_length=128,
-        unique=True,
-        db_index=True,
-    )
     email = models.EmailField(
         max_length=255,
         unique=True,
         db_index=True,
     )
     first_name = models.CharField(
-        max_length=255,
+        max_length=150,
         blank=True,
         db_index=True,
     )
     last_name = models.CharField(
-        max_length=255,
+        max_length=150,
         blank=True,
         db_index=True,
     )
     slug = AutoSlugField(
         populate_from="first_name",
         unique=True,
+        db_index=True,
     )
     gender = models.CharField(
         max_length=20,
@@ -114,9 +106,8 @@ class User(AbstractBaseUser, BaseModelWithUID, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = "username"
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = (
-        "email",
         "first_name",
         "last_name",
     )
