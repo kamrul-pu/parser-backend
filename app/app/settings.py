@@ -54,10 +54,15 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
 PROJECT_APPS = [
     "core",
     "common",
+    "candidate",
+    "recruitement",
+    "scraping",
 ]
+
 THIRD_PARTY_APPS = [
     "corsheaders",
     "django_filters",
