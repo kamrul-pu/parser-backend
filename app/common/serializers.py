@@ -15,3 +15,17 @@ class BaseSerializer(ModelSerializer):
             "id",
             "uid",
         )
+
+
+class LinkSerializer(HyperlinkedModelSerializer):
+    class Meta:
+        ref_name = ""
+        fields = (
+            "id",
+            "uid",
+        )
+
+        read_only_fields = (
+            "id",
+            "uid",
+        )
