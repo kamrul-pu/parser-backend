@@ -1,8 +1,12 @@
+from django.contrib.auth import get_user_model
+
 from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
 
-from core.models import User
+
 from core.rest.tests import urlhelpers, payloads
+
+User = get_user_model()
 
 
 class BaseTest(APITestCase):
