@@ -17,12 +17,12 @@ class BaseTest(APITestCase):
         self.client = APIClient()
 
         # Define payload
-        self.superuser_payload = payloads.superuser_create_payload()
+        self.superuser_payload = payloads.get_superuser_create_payload()
 
         # Create a superuser
         User.objects.create_superuser(
             first_name=self.superuser_payload["first_name"],
-            first_name=self.superuser_payload["last_name"],
+            last_name=self.superuser_payload["last_name"],
             email=self.superuser_payload["email"],
             password=self.superuser_payload["password"],
         )

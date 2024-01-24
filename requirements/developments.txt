@@ -4,6 +4,7 @@ Django==5.0
 django-autoslug==1.9.9
 django-cleanup==8.0.0
 django-cors-headers==4.3.1
+django-factory_boy
 django-filter==23.5
 django-silk==5.0.4
 django-versatileimagefield==3.0
