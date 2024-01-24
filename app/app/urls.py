@@ -22,6 +22,8 @@ urlpatterns = [
     path("api/v1/token/verify", TokenVerifyView.as_view(), name="token_verify"),
     # include user endpoints
     path("api/v1/users", include("core.rest.urls.user"), name="user-urls"),
+    # Include candidates endpoints
+    path("api/v1/candidates", include("candidate.rest.urls.base"), name="candidates-base-url"),
 ]
 
 if settings.DEBUG:
