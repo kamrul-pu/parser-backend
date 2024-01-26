@@ -4,13 +4,10 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from common.choices import BDCity
 from common.models import BaseModelWithUID
 from core.choices import UserGender
-from candidate.choices import (
-    RecruitmentStatus,
-    CandidateCity,
-    MaritalStatus
-)
+from candidate.choices import RecruitmentStatus, MaritalStatus
 
 User = get_user_model()
 
@@ -21,7 +18,7 @@ class Profile(BaseModelWithUID):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name="user_profile"
+        related_name="user_profile",
     )
     first_name = models.CharField(
         max_length=150,
@@ -37,8 +34,8 @@ class Profile(BaseModelWithUID):
         max_length=255,
         blank=True,
         db_index=True,
-        choices=CandidateCity.choices,
-        default=CandidateCity.UNKNOWN,
+        choices=BDCity.choices,
+        default=BDCity.UNKNOWN,
     )
     address = models.TextField(
         blank=True,
@@ -82,7 +79,7 @@ class Profile(BaseModelWithUID):
         max_length=100,
         blank=True,
         choices=RecruitmentStatus.choices,
-        default=RecruitmentStatus.PENDING
+        default=RecruitmentStatus.PENDING,
     )
     github_url = models.URLField(
         blank=True,
@@ -122,6 +119,7 @@ class Profile(BaseModelWithUID):
         default=dict,
         blank=True,
     )
+
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name} {self.city}"
 

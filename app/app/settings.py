@@ -59,7 +59,7 @@ PROJECT_APPS = [
     "core",
     "common",
     "candidate",
-    "recruitement",
+    "recruitment",
     "scraping",
 ]
 
@@ -178,6 +178,7 @@ APPEND_SLASH = False
 
 AUTH_USER_MODEL = "core.User"
 
+
 # Versatile Image settings
 VERSATILEIMAGEFIELD_SETTINGS = {
     # The amount of time, in seconds, that references to created images
@@ -237,6 +238,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
     ),
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.AnonRateThrottle",

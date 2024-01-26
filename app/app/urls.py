@@ -23,7 +23,17 @@ urlpatterns = [
     # include user endpoints
     path("api/v1/users", include("core.rest.urls.user"), name="user-urls"),
     # Include candidates endpoints
-    path("api/v1/candidates", include("candidate.rest.urls.base"), name="candidates-base-url"),
+    path(
+        "api/v1/candidates",
+        include("candidate.rest.urls.base"),
+        name="candidates-base-url",
+    ),
+    # Include recruitment endpoints
+    path(
+        "api/v1/recruitment",
+        include("recruitment.rest.urls.base"),
+        name="recruitment-app",
+    ),
 ]
 
 if settings.DEBUG:
