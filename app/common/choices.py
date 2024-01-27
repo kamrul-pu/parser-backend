@@ -23,6 +23,7 @@ class BDCity(TextChoices):
     CHITTAGONG_PORT = "CHITTAGONG_PORT", "Chittagong Port"
     CHUADANGA = "CHUADANGA", "Chuadanga"
     COX_S_BAZAR = "COX_S_BAZAR", "Cox's Bazar"
+    DHAKA = "DHAKA", "Dhaka"
     COMILLA = "COMILLA", "Comilla"
     FARIDPUR = "FARIDPUR", "Faridpur"
     FENI = "FENI", "Feni"
