@@ -110,7 +110,7 @@ class OpenJobs(BaseModelWithUID):
     )
 
     def __str__(self) -> str:
-        return f"{self.title} - {self.city}"
+        return f"{self.title} - {self.job_location}"
 
     class Meta:
         verbose_name_plural = "Open Jobs"
