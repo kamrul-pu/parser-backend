@@ -19,12 +19,3 @@ class JobStatus(TextChoices):
     OPEN = "OPEN", "Open"
     PUBLISHED = "PUBLISHED", "Published"
     REJECTED = "REJECTED", "Rejected"
-
-
-class JobType(TextChoices):
-    CONTRACTUAL = "CONTRACTUAL", "Contractual"
-    FULL_TIME = "FULL_TIME", "Full_Time"
-    PART_TIME = "PART_TIME", "Part_Time"
-    PERMANENT = "PERMANENT", "Permanent"
-    TEMPORARY = "TEMPORARY", "Temporary"
-    OTHER = "OTHER", "OTHER"

@@ -26,8 +26,9 @@ class OpenJobsAdmin(admin.ModelAdmin):
         "id",
         "uid",
         "title",
-        "city",
+        "job_location",
         "job_type",
+        "job_category",
         "job_status",
     )
 

@@ -9,6 +9,7 @@ class Status(TextChoices):
 
 
 class BDCity(TextChoices):
+    ANYWHERE = "ANYWHERE", "Anywhere"
     BAGERHAT = "BAGERHAT", "Bagerhat"
     BAKHTEYARPUR = "BAKHTEYARPUR", "Bakhteyarpur"
     BANDARBAN = "BANDARBAN", "Bandarban"
@@ -83,3 +84,49 @@ class BDCity(TextChoices):
     TUNGIPARA = "TUNGIPARA", "Tungipara"
     ULLAHPARA = "ULLAHPARA", "Ullahpara"
     UNKNOWN = "UNKNOWN", "Unknown"
+    OTHER = "OTHER", "Other"
+
+
+class Profession(TextChoices):
+    ENGINEER = "ENGINEER", "Engineer"
+    DOCTOR = "DOCTOR", "Doctor"
+    TEACHER = "TEACHER", "Teacher"
+    LAWYER = "LAWYER", "Lawyer"
+    ARTIST = "ARTIST", "Artist"
+    ACCOUNTANT = "ACCOUNTANT", "Accountant"
+    PYTHON_DEVELOPER = "PYTHON_DEVELOPER", "Python Developer"
+    C_PROGRAMMER = "C_PROGRAMMER", "C Programmer"
+    WEB_DEVELOPER = "WEB_DEVELOPER", "Web Developer"
+    ML_ENGINEER = "ML_ENGINEER", "ML Engineer"
+    DATA_ENGINEER = "DATA_ENGINEER", "Data Engineer"
+    SOFTWARE_ENGINEER = "SOFTWARE_ENGINEER", "Software Engineer"
+    NETWORK_ENGINEER = "NETWORK_ENGINEER", "Network Engineer"
+    DATABASE_ADMIN = "DATABASE_ADMIN", "Database Administrator"
+    SYSTEM_ADMIN = "SYSTEM_ADMIN", "System Administrator"
+    UI_UX_DESIGNER = "UI_UX_DESIGNER", "UI/UX Designer"
+    BUSINESS_ANALYST = "BUSINESS_ANALYST", "Business Analyst"
+    PROJECT_MANAGER = "PROJECT_MANAGER", "Project Manager"
+    QA_ENGINEER = "QA_ENGINEER", "QA Engineer"
+    TECH_SUPPORT = "TECH_SUPPORT", "Technical Support"
+    SECURITY_ANALYST = "SECURITY_ANALYST", "Security Analyst"
+    DEVOPS_ENGINEER = "DEVOPS_ENGINEER", "DevOps Engineer"
+    DATA_SCIENTIST = "DATA_SCIENTIST", "Data Scientist"
+    BLOCKCHAIN_DEVELOPER = "BLOCKCHAIN_DEVELOPER", "Blockchain Developer"
+    OTHER = "OTHER", "Other"
+
+
+class JobType(TextChoices):
+    CONTRACTUAL = "CONTRACTUAL", "Contractual"
+    FULL_TIME = "FULL_TIME", "Full_Time"
+    PART_TIME = "PART_TIME", "Part_Time"
+    PERMANENT = "PERMANENT", "Permanent"
+    TEMPORARY = "TEMPORARY", "Temporary"
+    OTHER = "OTHER", "OTHER"
+
+
+class JobCategory(TextChoices):
+    ANY = "ANY", "Any"
+    OFFICE = "OFFICE", "Office"
+    REMOTE = "REMOTE", "Remote"
+    HYBRID = "HYBRID", "Hybrid"
+    OTHER = "OTHER", "Other"

@@ -1,13 +1,14 @@
 """Models for recruitement related data."""
 
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 from autoslug import AutoSlugField
 
-from common.choices import BDCity
+from common.choices import BDCity, JobType, JobCategory
 from common.models import BaseModelWithUID
 
-from recruitment.choices import JobStatus, JobSource, JobType
+from recruitment.choices import JobStatus, JobSource
 
 
 class Recruiter(BaseModelWithUID):
@@ -42,12 +43,6 @@ class OpenJobs(BaseModelWithUID):
         populate_from="title",
         unique=True,
     )
-    city = models.CharField(
-        max_length=255,
-        choices=BDCity.choices,
-        default=BDCity.UNKNOWN,
-        db_index=True,
-    )
     recruiter = models.ForeignKey(
         Recruiter,
         on_delete=models.CASCADE,
@@ -76,26 +71,40 @@ class OpenJobs(BaseModelWithUID):
     raw_job = models.TextField(
         blank=True,
     )
-    job_requirements = models.JSONField(
+    experience_year = models.PositiveIntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(20)],
+    )
+    required_skills = models.JSONField(
+        default=dict,
+        blank=True,
+    )
+    required_experiences = models.JSONField(
         default=dict,
         blank=True,
     )
     job_location = models.CharField(
         max_length=255,
-        blank=True,
+        choices=BDCity.choices,
+        default=BDCity.OTHER,
     )
     job_type = models.CharField(
         max_length=30,
         choices=JobType.choices,
         default=JobType.OTHER,
     )
+    job_category = models.CharField(
+        max_length=30,
+        choices=JobCategory.choices,
+        default=JobCategory.OTHER,
+    )
     job_status = models.CharField(
         max_length=30,
         choices=JobStatus.choices,
         default=JobStatus.DRAFT,
     )
-    files = models.FileField(
-        upload_to="job-files",
+    attachement = models.FileField(
+        upload_to="job-attachments",
         blank=True,
         null=True,
     )
