@@ -20,24 +20,35 @@ class ProfileBaseSerializer(serializers.ModelSerializer):
             "marital_status",
             "telephone",
             "email",
-            "profession_desires",
-            "profile_state",
             "recruitment_status",
-            "cv_raw",
+            "profession_desires",
             "skills",
-            "commercial_level",
             "score",
+            "desired_job_category",
+            "job_type",
         )
         read_only_fields = ("id",)
 
 
 class ProfileListSerializer(ProfileBaseSerializer):
     class Meta(ProfileBaseSerializer.Meta):
-        fields = ProfileBaseSerializer.Meta.fields + ("job_request",)
+        fields = ProfileBaseSerializer.Meta.fields + (
+            "original_cv",
+            "experiences",
+            "experience_year",
+            "github_url",
+            "linkedin_url",
+        )
         read_only_fields = ProfileBaseSerializer.Meta.read_only_fields + ()
 
 
 class ProfileDetailSerializer(ProfileBaseSerializer):
     class Meta(ProfileBaseSerializer.Meta):
-        fields = ProfileBaseSerializer.Meta.fields + ("job_request",)
+        fields = ProfileBaseSerializer.Meta.fields + (
+            "experiences",
+            "experience_year",
+            "profile_state",
+            "github_url",
+            "linkedin_url",
+        )
         read_only_fields = ProfileBaseSerializer.Meta.read_only_fields + ()

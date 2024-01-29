@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from common.choices import BDCity
+from common.choices import BDCity, Profession, JobCategory, JobType
 from common.models import BaseModelWithUID
 from core.choices import UserGender
 from candidate.choices import RecruitmentStatus, MaritalStatus
@@ -69,7 +69,8 @@ class Profile(BaseModelWithUID):
     )
     profession_desires = models.CharField(
         max_length=255,
-        blank=True,
+        choices=Profession.choices,
+        default=Profession.OTHER,
     )
     profile_state = models.CharField(
         max_length=100,
@@ -102,23 +103,32 @@ class Profile(BaseModelWithUID):
         default=dict,
         blank=True,
     )
-    commercial_level = models.CharField(
-        max_length=100,
+    experiences = models.JSONField(
+        default=dict,
         blank=True,
+    )
+    experience_year = models.PositiveIntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(20)],
     )
     score = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(1000)],
         default=0,
     )
+    desired_job_category = models.CharField(
+        max_length=30,
+        choices=JobCategory.choices,
+        default=JobCategory.ANY,
+    )
+    job_type = models.CharField(
+        max_length=30,
+        choices=JobType.choices,
+        default=JobType.OTHER,
+    )
     # jrsp = models.JSONField(
     #     default=dict,
     #     blank=True,
     # )
-    # we may shift the data in separate model in the future
-    job_request = models.JSONField(
-        default=dict,
-        blank=True,
-    )
 
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name} {self.city}"

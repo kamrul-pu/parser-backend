@@ -32,9 +32,7 @@ class ProfileFactory(factory.django.DjangoModelFactory):
     linkedin_url = factory.Faker("url")
     original_cv = factory.django.FileField(filename="original_cv.pdf")
     cv_raw = factory.Faker("text")
+    experience_year = factory.Faker("random_int", min=0, max=20)
+    # experiences = factory.Faker("pydict")
     # skills = factory.Faker("pydict")
-    commercial_level = factory.Faker(
-        "random_element", elements=["High", "Medium", "Low"]
-    )
     score = factory.Faker("random_int", min=0, max=1000)
-    # job_request = factory.Faker("pydict")

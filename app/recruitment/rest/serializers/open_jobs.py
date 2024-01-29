@@ -13,7 +13,7 @@ class OpenJobBaseSerializer(serializers.ModelSerializer):
             "uid",
             "title",
             "slug",
-            "city",
+            "job_location",
         )
         read_only_fields = (
             "id",
@@ -31,10 +31,10 @@ class OpenJobListSerializer(OpenJobBaseSerializer):
             "profession",
             "raw_job",
             "job_requirements",
-            "job_location",
             "job_type",
+            "job_category",
             "job_status",
-            "files",
+            "attachment",
         )
         read_only_fields = OpenJobBaseSerializer.Meta.read_only_fields + ()
 
