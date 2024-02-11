@@ -5,7 +5,7 @@ Register recruitment related models here.
 from django.contrib import admin
 
 
-from recruitment.models import Recruiter, OpenJobs
+from recruitment.models import Recruiter, OpenJobs, Match
 
 
 class RecruiterAdmin(admin.ModelAdmin):
@@ -26,6 +26,7 @@ class OpenJobsAdmin(admin.ModelAdmin):
         "id",
         "uid",
         "title",
+        "profession",
         "job_location",
         "job_type",
         "job_category",
@@ -34,3 +35,15 @@ class OpenJobsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(OpenJobs, OpenJobsAdmin)
+
+
+class MatchAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "uid",
+        "recruitment_status",
+        "status",
+    )
+
+
+admin.site.register(Match, MatchAdmin)

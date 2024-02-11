@@ -72,14 +72,14 @@ def generate_skills() -> dict:
 
 
 def generate_experiences() -> dict:
-    language_experience = {
-        lang: random.choice(experience_levels)
+    language_experience = [
+        lang + " - " + random.choice(experience_levels)
         for lang in random.sample(programming_languages, random.randint(3, 4))
-    }
-    framework_experience = {
-        framework: random.choice(experience_levels)
+    ]
+    framework_experience = [
+        framework + " - " + random.choice(experience_levels)
         for framework in random.sample(frameworks, random.randint(3, 4))
-    }
+    ]
 
     return {
         "programming_languages": language_experience,

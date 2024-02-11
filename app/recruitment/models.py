@@ -5,6 +5,7 @@ from django.db import models
 
 from autoslug import AutoSlugField
 
+from candidate.choices import RecruitmentStatus
 from common.choices import BDCity, JobType, JobCategory
 from common.models import BaseModelWithUID
 
@@ -114,3 +115,36 @@ class OpenJobs(BaseModelWithUID):
 
     class Meta:
         verbose_name_plural = "Open Jobs"
+
+
+class Match(BaseModelWithUID):
+    open_job = models.ForeignKey(
+        OpenJobs,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        related_name="job_matches",
+    )
+    # List of profiles ids
+    same_city_matches = models.JSONField(
+        default=dict,
+        blank=True,
+        null=True,
+    )
+    # list of profiles ids
+    different_city_matches = models.JSONField(
+        default=dict,
+        blank=True,
+        null=True,
+    )
+    recruitment_status = models.CharField(
+        max_length=30,
+        choices=RecruitmentStatus.choices,
+        default=RecruitmentStatus.PENDING,
+    )
+
+    def __str__(self) -> str:
+        return f"{self.id} {self.recruitment_status}"
+
+    class Meta:
+        verbose_name_plural = "Job Match Profile"
