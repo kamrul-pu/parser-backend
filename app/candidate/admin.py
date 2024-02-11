@@ -6,7 +6,14 @@ from candidate.models import Profile
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ("id", "first_name", "last_name", "recruitment_status", "score",)
+    list_display = (
+        "id",
+        "first_name",
+        "last_name",
+        "profession_desires",
+        "recruitment_status",
+        "score",
+    )
 
 
 admin.site.register(Profile, ProfileAdmin)

@@ -12,4 +12,5 @@ urlpatterns = [
         include("recruitment.rest.urls.open_jobs"),
         name="open-jobs-endpoints",
     ),
+    path("/matches", include("recruitment.rest.urls.match")),
 ]
